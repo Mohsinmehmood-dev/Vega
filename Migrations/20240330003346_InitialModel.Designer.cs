@@ -11,8 +11,8 @@ using Vega;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20240329230132_InitialModelsWithConstraints")]
-    partial class InitialModelsWithConstraints
+    [Migration("20240330003346_InitialModel")]
+    partial class InitialModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,10 @@ namespace Vega.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
@@ -52,9 +53,10 @@ namespace Vega.Migrations
                     b.Property<int>("MakeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 

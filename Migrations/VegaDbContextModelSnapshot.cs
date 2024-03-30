@@ -29,9 +29,10 @@ namespace Vega.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
@@ -49,9 +50,10 @@ namespace Vega.Migrations
                     b.Property<int>("MakeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
